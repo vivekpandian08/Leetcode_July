@@ -71,3 +71,34 @@
                 count+=1
         
         return record[(N-1)%count]
+
+# July_4 : Ugly Number II
+
+        class Solution:
+            def nthUglyNumber(self, n):
+                ugly = [1]
+                i2, i3, i5 = 0, 0, 0
+                while n > 1:
+                    u2, u3, u5 = 2 * ugly[i2], 3 * ugly[i3], 5 * ugly[i5]
+                    mini = min(u2, u3, u5)
+                    if mini == u2:
+                        i2 += 1
+                    if mini == u3:
+                        i3 += 1
+                    if mini == u5:
+                        i5 += 1
+                    ugly.append(mini)
+                    n -= 1
+                return ugly[-1]
+                
+#July_5: Hamming Distance:
+
+    class Solution:
+        def hammingDistance(self, x: int, y: int) -> int:
+            res = 0
+            for i in bin(x^y)[2:]:
+                if i == '1':
+                    res += 1
+            return res
+                
+                
